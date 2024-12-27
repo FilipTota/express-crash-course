@@ -1,0 +1,16 @@
+{
+  "name": "express-crash-course",
+  "version": "1.0.0",
+  "description": "Express crash course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "node --watch --env-file=.env server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
