@@ -16,8 +16,20 @@ let posts = [
   },
 ];
 
+// const logger = (req, res, next) => {
+//   // we can implement this on a route or the app level
+//   console.log(
+//     `${req.method} ${req.protocol}://${req.get("host")}${req.originalUrl}`
+//   );
+//   next();
+// };
+// for logger to be on app lvl, we need to import it in server.js
+
 // GET all posts
 router.get("/", (req, res) => {
+  // logger on a route level (for example: we want it to run only on this GET route)
+  // -> to use logger middleware on a route lvl, we pass it inside router.get("/", logger, (req, res) => {})
+
   // console.log("req.query :>> ", req.query);
   // res.json(posts); // json() method is same as res.send() but it's for json
 

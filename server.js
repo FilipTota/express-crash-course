@@ -2,10 +2,15 @@ import express from "express";
 import path from "path";
 // import posts from router folder
 import posts from "./routes/posts.js";
+import logger from "./middleware/logger.js";
 const PORT = process.env.PORT || 8000;
 
 // initial express into app variable (app variable/object is used for everything like creating routes, using middleware, stating server...)
 const app = express();
+
+//---------------------------------LOGGER MIDDLEWARE---------------------------------------------------------
+app.use(logger);
+// this puts logger middleware on a app level and every route uses this logger
 
 //---------------------------------BODY PARSER MIDDLEWARE----------------------------------------------------------
 app.use(express.json()); // this will take care of being able to submit raw json
