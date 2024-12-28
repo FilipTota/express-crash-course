@@ -3,6 +3,8 @@ import path from "path";
 // import posts from router folder
 import posts from "./routes/posts.js";
 import logger from "./middleware/logger.js";
+import errorHandler from "./middleware/error.js";
+import notFound from "./middleware/notFound.js";
 const PORT = process.env.PORT || 8000;
 
 // initial express into app variable (app variable/object is used for everything like creating routes, using middleware, stating server...)
@@ -40,6 +42,11 @@ app.use(express.urlencoded({ extended: false })); // this will allow us to send 
 
 //----------------------------------ROUTES---------------------------------------------------------
 app.use("/api/posts", posts);
+
+//---------------------------------ERROR HANDLER MIDDLEWARE---------------------------------------------------------
+// we put errorHandler below routes, otherwise we could have some conflicts
+app.use(notFound);
+app.use(errorHandler);
 
 //----------------------------------LISTEN---------------------------------------------------------
 
