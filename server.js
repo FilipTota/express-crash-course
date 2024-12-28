@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 // import posts from router folder
 import posts from "./routes/posts.js";
 import logger from "./middleware/logger.js";
@@ -19,10 +20,15 @@ app.use(express.json()); // this will take care of being able to submit raw json
 app.use(express.urlencoded({ extended: false })); // this will allow us to send for data (x-www-form-urlencoded)
 
 //---------------------------------STATIS FOLDER---------------------------------------------------------
+
+// Get the directory name (have to define it ourselfts because __dirname is not defined in ES module, only in CommonJS)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Setup static folder
 // -> statis folder will be public
 // -> and we can define it to access files through url to not have a lot of different routes for each file
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 //---------------------------------BASIC ROUTE---------------------------------------------------------
 
